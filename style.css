@@ -1,0 +1,20 @@
+body{
+    background-color: powderblue;
+    color: lightgreen;
+}
+
+.heading{
+    width: 80%;
+    font-size: 40px;
+    color:orange
+}
+
+.name_of_objects, #object_name, #accuracy_num{
+    color: orange;
+}
+
+#camera{
+    border: 2px dotted orange;
+    width: 380px;
+    height: 290px;
+}
