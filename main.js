@@ -17,14 +17,14 @@ function Captr_object(){
 
 console.log("Ml5 version= ", ml5.version);
 
-cla=ml5.imageClassifier("https://teachablemachine.withgoogle.com/models/2ZaHAF8UC/model.json", Modal_loded);
+cla=ml5.imageClassifier("https://teachablemachine.withgoogle.com/models/1c8t-ukDP/model.json", Modal_loded);
 
 function Modal_loded(){
     console.log("MOOOOOOOOOOODDDDDDDDAAAAAAAAAAALLLLLLLLL LLLLLLLLOOOOOOOODDDDDDDDDDDEEEEEEDDDDDDDDDDDDDD");
 }
 
 function Idnt_object(){
-    Pic=document.getElementById("result");
+    Pic=document.getElementById("Img");
     cla.classify(Pic, gotResult);
 }
 function gotResult(error, results){
