@@ -24,7 +24,7 @@ function Modal_loded(){
 }
 
 function Idnt_object(){
-    Pic=document.getElementById("Img");
+    Pic=document.getElementById("Picture");
     cla.classify(Pic, gotResult);
 }
 function gotResult(error, results){
