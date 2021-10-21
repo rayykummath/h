@@ -1,41 +1,31 @@
-Webcam.set({
-    width:350,
-    height:300,
-    image_format:"png",
-    png_quality:90
-});
-
-camera=document.getElementById("camera");
-
-Webcam.attach(camera);
-
-function Captr_object(){
-    Webcam.snap(function(Img){
-        document.getElementById("result").innerHTML="<img id='Picture' src='"+Img+"'>";
-    });
+function setup(){
+    canvas=createCanvas(250,200);
+    canvas.position(515,320)
+    chimera=createCapture(VIDEO);
+    chimera.hide();
+    claspier=ml5.imageClassifier("https://teachablemachine.withgoogle.com/models/1c8t-ukDP/model.json", modallodad);
 }
 
-console.log("Ml5 version= ", ml5.version);
-
-cla=ml5.imageClassifier("https://teachablemachine.withgoogle.com/models/1c8t-ukDP/model.json", Modal_loded);
-
-function Modal_loded(){
-    console.log("MOOOOOOOOOOODDDDDDDDAAAAAAAAAAALLLLLLLLL LLLLLLLLOOOOOOOODDDDDDDDDDDEEEEEEDDDDDDDDDDDDDD");
+function modallodad(){
+    console.log(ml5.version+"MOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOODDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOODDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD sucessfully");
 }
 
-function Idnt_object(){
-    Pic=document.getElementById("Picture");
-    cla.classify(Pic, gotResult);
+function preload(){
+
 }
-function gotResult(error, results){
+
+function draw(){
+    image(chimera,0,0,300,250);
+    claspier.classify(chimera, resupialts);
+}
+
+function resupialts(error, results){
     if(error){
         console.error(error);
     }
     else{
         console.log(results);
-        prediction=results[0].label;
-        accuracy=results[0].confidence;
-        document.getElementById("object_name").innerHTML=prediction;
-        document.getElementById("accuracy_num").innerHTML=confidence.ToFixed(2)*100+"%";
+        document.getElementById("daspanthatholdstheobject").innerHTML=results[0].label;
+        document.getElementById("daspanthatholdstheaccuracy").innerHTML=results[0].confidence.toFixed(2)*100+"%";
     }
-    }
+}
